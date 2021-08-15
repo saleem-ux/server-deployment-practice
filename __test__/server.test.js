@@ -9,13 +9,14 @@ describe('express server', () => {
         //arrange
         let param = '/';
         let status = 200;
-        let text = 'Hello World';
+        let text = 'Hello World!';
         //act
         const response = await request.get(param);
         //assert
         expect(response.status).toBe(status);
         expect(response.text).toBe(text);
     });
+
 
     it('should check the data it works successfully', async () => {
         //arrange
@@ -28,16 +29,18 @@ describe('express server', () => {
         expect(typeof response.body).toEqual('object');
     });
 
-    it('should check 500 error', async () => {
+    it('should check the 500 errors' ,async()=>{
         //arrange
-        let param = '/bad';
+        let param='/bad';
         let status = 500;
+        
         //act
         const response = await request.get(param);
         //assert
         expect(response.status).toBe(status);
-        expect(response.body.route).toBe(param)
+
     });
+
     it('should check 404 not found errors', async () => {
         //arrange
         let param = '/notfound';
